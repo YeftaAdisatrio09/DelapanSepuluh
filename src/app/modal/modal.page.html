@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="note">
+    <ion-item>
+      <ion-label position="stacked">Nama Barang</ion-label>
+      <ion-input [(ngModel)]="note.nama"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Berat Barang</ion-label>
+      <ion-input [(ngModel)]="note.berat"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Harga Beli</ion-label>
+      <ion-input [(ngModel)]="note.beli"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Harga Jual</ion-label>
+      <ion-input [(ngModel)]="note.jual"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Alamat Toko</ion-label>
+      <ion-input [(ngModel)]="note.toko"></ion-input>
+    </ion-item>
+  </div>
+
+  <ion-button expand="block" color="success" (click)="updateNote()">
+    <ion-icon name="save" slot="start"></ion-icon>
+    Ubah Data
+  </ion-button>
+  <ion-button expand="block" color="danger" (click)="deleteNote()">
+    <ion-icon name="trash" slot="start"></ion-icon>
+    Hapus Data
+  </ion-button>
+</ion-content>
