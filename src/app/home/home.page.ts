@@ -11,6 +11,7 @@ import { ModalPage } from '../modal/modal.page';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  searchTerm: string;
   notes: Note[] = [];
 
   constructor(
