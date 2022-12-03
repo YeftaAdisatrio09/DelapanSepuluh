@@ -16,7 +16,7 @@ export interface Note {
   nama: string;
   berat: string;
   beli: number;
-  jual: number;
+  persen: number;
   toko: string;
 }
 
@@ -52,7 +52,7 @@ export class DataService {
       nama: note.nama,
       berat: note.berat,
       beli: note.beli,
-      jual: note.jual,
+      persen: note.persen,
       toko: note.toko,
     });
   }

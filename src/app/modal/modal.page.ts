@@ -10,12 +10,19 @@ import { ModalController, ToastController } from '@ionic/angular';
 export class ModalPage implements OnInit {
   @Input() id: string;
   note: Note = null;
+  hasil: number = 0;
 
   constructor(
     private dataService: DataService,
     private modalCtrl: ModalController,
     private toastCtrl: ToastController
   ) {}
+
+  jumlah(val1, val2) {
+    this.hasil = (parseFloat(val1) * (100 + parseFloat(val2))) / 100;
+
+    return this.hasil;
+  }
 
   ngOnInit() {
     this.dataService.getNoteById(this.id).subscribe((res) => {

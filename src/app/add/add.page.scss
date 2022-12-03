@@ -1,0 +1,27 @@
+ion-toolbar {
+  ion-title {
+    font-weight: bold;
+  }
+}
+
+ion-card {
+  padding: 10px;
+  //background-color: red;
+  ion-item {
+    --background: #fafafa;
+    margin-bottom: 2%;
+
+    ion-label {
+      color: #222222;
+    }
+    ion-input {
+      --color: #222222;
+      font-size: 15px;
+      margin: 1%;
+    }
+  }
+  ion-button {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+}

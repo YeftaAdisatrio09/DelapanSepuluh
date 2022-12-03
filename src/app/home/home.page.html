@@ -30,6 +30,7 @@
     [(ngModel)]="searchTerm"
     showCancelButton="focus"
     animated
+    class="custom"
   >
   </ion-searchbar>
 
@@ -46,12 +47,15 @@
         <h3>{{ note.nama }}</h3>
         <p class="address">{{note.toko}}</p>
       </ion-label>
-      <p class="price">{{note.jual}}</p>
+      <ion-label>
+        <p class="jual">Rp {{(note.beli*(100+note.persen))/100}}</p>
+        <p class="beli">Rp {{note.beli}}+({{note.persen}}%)</p>
+      </ion-label>
     </ion-item>
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="addNote()">
+    <ion-fab-button [routerLink]="['/add']">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
