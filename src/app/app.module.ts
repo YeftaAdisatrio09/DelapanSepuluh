@@ -11,21 +11,7 @@ import { environment } from '../environments/environment';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
-import {
-  CurrencyMaskConfig,
-  CurrencyMaskModule,
-  CURRENCY_MASK_CONFIG,
-} from 'ng2-currency-mask';
-
-export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
-  align: 'right',
-  allowNegative: false,
-  decimal: ',',
-  precision: 2,
-  prefix: 'Rp ',
-  suffix: '',
-  thousands: '.',
-};
+import { provideAuth, getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,12 +21,9 @@ export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    CurrencyMaskModule,
+    provideAuth(() => getAuth()),
   ],
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig },
-  ],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
