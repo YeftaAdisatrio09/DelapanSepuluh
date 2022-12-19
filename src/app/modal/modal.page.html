@@ -5,25 +5,25 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="note">
+  <div *ngIf="data">
     <ion-item>
       <ion-label position="floating">Nama Barang</ion-label>
-      <ion-input [(ngModel)]="note.nama"></ion-input>
+      <ion-input [(ngModel)]="data.nama"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Berat Barang</ion-label>
-      <ion-input [(ngModel)]="note.berat"></ion-input>
+      <ion-input [(ngModel)]="data.berat"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Harga Beli</ion-label>
-      <ion-input [(ngModel)]="note.beli" #val1></ion-input>
+      <ion-input [(ngModel)]="data.beli" #val1></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Persen Kenaikan</ion-label>
-      <ion-input [(ngModel)]="note.persen" #val2></ion-input>
+      <ion-input [(ngModel)]="data.persen" #val2></ion-input>
     </ion-item>
 
     <ion-item>
@@ -32,7 +32,7 @@
 
     <ion-item>
       <ion-label position="floating">Alamat Toko</ion-label>
-      <ion-textarea type="textarea" [(ngModel)]="note.toko"></ion-textarea>
+      <ion-textarea type="textarea" [(ngModel)]="data.toko"></ion-textarea>
     </ion-item>
   </div>
 

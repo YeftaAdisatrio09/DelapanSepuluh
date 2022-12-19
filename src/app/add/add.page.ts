@@ -4,7 +4,7 @@ import {
   NavController,
   ToastController,
 } from '@ionic/angular';
-import { Note, DataService } from '../services/data.service';
+import { Data, DataService } from '../services/data.service';
 
 // import { NgxMaskModule, IConfig } from 'ng2-currency-mask';
 
@@ -14,7 +14,7 @@ import { Note, DataService } from '../services/data.service';
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage implements OnInit {
-  note = {} as Note;
+  data = {} as Data;
   hasil: number = 0;
   constructor(
     private dataService: DataService,
@@ -25,25 +25,24 @@ export class AddPage implements OnInit {
 
   jumlah(val1, val2) {
     this.hasil = (parseFloat(val1) * (100 + parseFloat(val2))) / 100;
-
     return this.hasil;
   }
 
   ngOnInit() {}
 
-  async addData(note: Note) {
+  async addData(data: Data) {
     let loader = this.loadingController.create({
       message: 'Mohon Tunggu...',
     });
     (await loader).present();
 
     try {
-      this.dataService.addNote({
-        nama: note.nama,
-        berat: note.berat,
-        beli: note.beli,
-        persen: note.persen,
-        toko: note.toko,
+      this.dataService.addData({
+        nama: data.nama,
+        berat: data.berat,
+        beli: data.beli,
+        persen: data.persen,
+        toko: data.toko,
       });
     } catch (e) {
       this.showToast('error..');

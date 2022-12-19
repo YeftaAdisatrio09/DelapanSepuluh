@@ -43,16 +43,16 @@
     </ion-item> -->
 
     <ion-item
-      *ngFor="let note of notes |filter:searchTerm"
-      (click)="openNote(note)"
+      *ngFor="let data of datas |filter:searchTerm"
+      (click)="openNote(data)"
     >
       <ion-label>
-        <h3>{{ note.nama }}</h3>
-        <p class="address">{{note.toko}}</p>
+        <h3>{{ data.nama }}</h3>
+        <p class="address">{{data.toko}}</p>
       </ion-label>
       <ion-label>
-        <p class="jual">Rp {{(note.beli*(100+note.persen))/100}}</p>
-        <p class="beli">Rp {{note.beli}}+({{note.persen}}%)</p>
+        <p class="jual">Rp {{(data.beli*(100+data.persen))/100}}</p>
+        <p class="beli">Rp {{data.beli}}+({{data.persen}}%)</p>
       </ion-label>
     </ion-item>
   </ion-list>

@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 //import { FirebaseService } from '../../firebase.service';
 
 import { AlertController, ModalController } from '@ionic/angular';
-import { DataService, Note } from '../services/data.service';
+import { DataService, Data } from '../services/data.service';
 import { ModalPage } from '../modal/modal.page';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
@@ -14,26 +14,25 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
   searchTerm: string;
-  notes: Note[] = [];
+  datas: Data[] = [];
 
   constructor(
     private dataService: DataService,
     private cd: ChangeDetectorRef,
-    private alertCtrl: AlertController,
     private modalCtrl: ModalController,
     private authService: AuthService,
     private router: Router
   ) {
-    this.dataService.getNotes().subscribe((res) => {
-      this.notes = res;
+    this.dataService.getDatas().subscribe((res) => {
+      this.datas = res;
       this.cd.detectChanges();
     });
   }
 
-  async openNote(note: Note) {
+  async openData(data: Data) {
     const modal = await this.modalCtrl.create({
       component: ModalPage,
-      componentProps: { id: note.id },
+      componentProps: { id: data.id },
       breakpoints: [0, 0.5, 0.8],
       initialBreakpoint: 0.8,
     });

@@ -11,7 +11,7 @@ import {
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
-export interface Note {
+export interface Data {
   id?: string;
   nama: string;
   berat: string;
@@ -26,34 +26,34 @@ export interface Note {
 export class DataService {
   constructor(private firestore: Firestore) {}
 
-  getNotes(): Observable<Note[]> {
-    const notesRef = collection(this.firestore, 'notes');
-    return collectionData(notesRef, { idField: 'id' }) as Observable<Note[]>;
+  getDatas(): Observable<Data[]> {
+    const notesRef = collection(this.firestore, 'datas');
+    return collectionData(notesRef, { idField: 'id' }) as Observable<Data[]>;
   }
 
-  getNoteById(id): Observable<Note> {
-    const noteDocRef = doc(this.firestore, `notes/${id}`);
-    return docData(noteDocRef, { idField: 'id' }) as Observable<Note>;
+  getDataById(id): Observable<Data> {
+    const noteDocRef = doc(this.firestore, `datas/${id}`);
+    return docData(noteDocRef, { idField: 'id' }) as Observable<Data>;
   }
 
-  addNote(note: Note) {
-    const notesRef = collection(this.firestore, 'notes');
-    return addDoc(notesRef, note);
+  addData(data: Data) {
+    const notesRef = collection(this.firestore, 'datas');
+    return addDoc(notesRef, data);
   }
 
-  deleteNote(note: Note) {
-    const noteDocRef = doc(this.firestore, `notes/${note.id}`);
+  deleteData(data: Data) {
+    const noteDocRef = doc(this.firestore, `datas/${data.id}`);
     return deleteDoc(noteDocRef);
   }
 
-  updateNote(note: Note) {
-    const noteDocRef = doc(this.firestore, `notes/${note.id}`);
+  updateData(data: Data) {
+    const noteDocRef = doc(this.firestore, `datas/${data.id}`);
     return updateDoc(noteDocRef, {
-      nama: note.nama,
-      berat: note.berat,
-      beli: note.beli,
-      persen: note.persen,
-      toko: note.toko,
+      nama: data.nama,
+      berat: data.berat,
+      beli: data.beli,
+      persen: data.persen,
+      toko: data.toko,
     });
   }
 }

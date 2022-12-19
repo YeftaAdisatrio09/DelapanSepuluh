@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Note, DataService } from '../services/data.service';
+import { Data, DataService } from '../services/data.service';
 import { ModalController, ToastController } from '@ionic/angular';
 
 @Component({
@@ -9,7 +9,7 @@ import { ModalController, ToastController } from '@ionic/angular';
 })
 export class ModalPage implements OnInit {
   @Input() id: string;
-  note: Note = null;
+  data: Data = null;
   hasil: number = 0;
 
   constructor(
@@ -25,13 +25,13 @@ export class ModalPage implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.getNoteById(this.id).subscribe((res) => {
-      this.note = res;
+    this.dataService.getDataById(this.id).subscribe((res) => {
+      this.data = res;
     });
   }
 
   async deleteNote() {
-    await this.dataService.deleteNote(this.note);
+    await this.dataService.deleteData(this.data);
     const toast = await this.toastCtrl.create({
       message: 'Data Terhapus!.',
       duration: 2000,
@@ -41,7 +41,7 @@ export class ModalPage implements OnInit {
   }
 
   async updateNote() {
-    await this.dataService.updateNote(this.note);
+    await this.dataService.updateData(this.data);
     const toast = await this.toastCtrl.create({
       message: 'Data Berubah!.',
       duration: 2000,

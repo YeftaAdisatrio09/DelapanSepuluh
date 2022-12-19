@@ -20,7 +20,6 @@ export class LoginPage implements OnInit {
     private router: Router
   ) {}
 
-  // Easy access for form fields
   get email() {
     return this.credentials.get('email');
   }
@@ -36,20 +35,6 @@ export class LoginPage implements OnInit {
     });
   }
 
-  async register() {
-    const loading = await this.loadingController.create();
-    await loading.present();
-
-    const user = await this.authService.register(this.credentials.value);
-    await loading.dismiss();
-
-    if (user) {
-      this.router.navigateByUrl('/home', { replaceUrl: true });
-    } else {
-      this.showAlert('Daftar Gagal', 'Erorr!!');
-    }
-  }
-
   async login() {
     const loading = await this.loadingController.create();
     await loading.present();
@@ -61,6 +46,20 @@ export class LoginPage implements OnInit {
       this.router.navigateByUrl('/home', { replaceUrl: true });
     } else {
       this.showAlert('Gagal Masuk', 'Erorr!!');
+    }
+  }
+
+  async register() {
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    const user = await this.authService.register(this.credentials.value);
+    await loading.dismiss();
+
+    if (user) {
+      this.router.navigateByUrl('/home', { replaceUrl: true });
+    } else {
+      this.showAlert('Daftar Gagal', 'Erorr!!');
     }
   }
 

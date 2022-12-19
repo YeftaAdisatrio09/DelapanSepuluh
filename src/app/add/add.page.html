@@ -11,34 +11,34 @@
   <ion-card>
     <ion-item>
       <ion-label position="floating">Nama Barang</ion-label>
-      <ion-input type="text" [(ngModel)]="note.nama"></ion-input>
+      <ion-input type="text" [(ngModel)]="data.nama"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Berat Barang</ion-label>
-      <ion-input type="text" [(ngModel)]="note.berat"></ion-input>
+      <ion-input type="text" [(ngModel)]="data.berat"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Harga Beli</ion-label>
       <ion-input
         currencyMask
         type="number"
-        [(ngModel)]="note.beli"
+        [(ngModel)]="data.beli"
         #val1
       ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Persen Kenaikan</ion-label>
-      <ion-input type="number" [(ngModel)]="note.persen" #val2></ion-input>
+      <ion-input type="number" [(ngModel)]="data.persen" #val2></ion-input>
     </ion-item>
     <ion-item>
       <ion-label> Total Kenaikan: {{jumlah(val1.value,val2.value)}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Alamat Toko</ion-label>
-      <ion-input type="textarea" [(ngModel)]="note.toko"></ion-input>
+      <ion-input type="textarea" [(ngModel)]="data.toko"></ion-input>
     </ion-item>
 
-    <ion-button expand="block" color="primary" (click)="addData(note)">
+    <ion-button expand="block" color="primary" (click)="addData(data)">
       Simpan
     </ion-button>
   </ion-card>
